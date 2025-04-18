@@ -1,0 +1,37 @@
+## get all content
+GET http://localhost:8080/api/content
+
+### Get content By ID
+GET http://localhost:8080/api/content/1
+
+###
+POST http://localhost:8080/api/content
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "tchami test final  data",
+  "desc": "this is the second description  for testing data on post methode ",
+  "status": "IDEA",
+  "contentType": "ARTICLE",
+  "dateCreated": "2025-04-18T14:28:57.4179675",
+  "dateUpdated": null,
+  "url": ""
+}
+
+### UPDATE THE CONTENT IF EXIST
+PUT http://localhost:8080/api/content/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "tchami test final  data",
+  "desc": "this is the second description  for testing data on post methode ",
+  "status": "IDEA",
+  "contentType": "ARTICLE",
+  "dateCreated": "2025-04-18T14:28:57.4179675",
+  "dateUpdated": "2025-04-18T14:28:57.4179675",
+  "url": "https://myBrand.vercel.com"
+}
+### delete content by ID
+DELETE http://localhost:8080/api/content/1
