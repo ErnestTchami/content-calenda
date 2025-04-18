@@ -13,23 +13,32 @@ import java.util.Optional;
 
 @Repository
 public class ContentCollectionRepository {
-    private final List<Content> content=new ArrayList<>();
+    private final List<Content> contentList =new ArrayList<>();
 
     public ContentCollectionRepository() {}
 
     public List<Content> findAll(){
-        return content;
+        return contentList;
     }
 
     public Optional<Content> finById(Integer id){
-        return content.stream().filter(c->c.id().equals(id)).findFirst();
+        return contentList.stream().filter(c->c.id().equals(id)).findFirst();
     }
 
     // create the dummy data by using post constructor
 
+
+
+    public  void add(Content content){
+        contentList.removeIf(c->c.id().equals(content.id()));
+        contentList.add(content);
+    }
+
+
+//    add the initial value for my API
     @PostConstruct
     private void inti() {
-        Content c = new Content(1,
+        Content content = new Content(1,
                 "tchami test data",
                 "this is the best description for testing data ",
                 Status.IDEA,
@@ -38,6 +47,14 @@ public class ContentCollectionRepository {
                 null,
                 ""
         );
-        content.add(c);
+        contentList.add(content);
+    }
+
+    public boolean existsById(Integer id) {
+        return contentList.stream().filter(c->c.id().equals(id)).count() ==1;
+    }
+
+    public void delete(Integer id) {
+        contentList.removeIf(c->c.id().equals(id));
     }
 }

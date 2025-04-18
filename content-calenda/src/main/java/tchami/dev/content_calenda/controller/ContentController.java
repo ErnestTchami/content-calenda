@@ -30,4 +30,26 @@ public class ContentController {
         return repository.finById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"CONTENT NOT FOUND"));
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("")
+    public void create( @RequestBody Content content){
+        repository.add(content);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{id}")
+    public void update(@RequestBody Content content ,@PathVariable Integer id ){
+        if(!repository.existsById(id)){
+             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CONTENT NOT FOUND");
+        }
+        repository.add(content);
+    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id){
+        if(!repository.existsById(id)){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CONTENT NOT FOUND");
+        }
+        repository.delete(id);
+    }
 }
