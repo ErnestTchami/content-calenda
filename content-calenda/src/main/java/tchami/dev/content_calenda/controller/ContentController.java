@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import tchami.dev.content_calenda.model.Content;
 import tchami.dev.content_calenda.repository.ContentCollectionRepository;
+import tchami.dev.content_calenda.repository.ContentJdbcTemplateRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +17,10 @@ import java.util.Optional;
 @CrossOrigin
 public class ContentController {
     private final ContentCollectionRepository repository;
+
+
+//    here if you want you can use the repository from jdbcTemplate same as the first one
+//    private final ContentJdbcTemplateRepository jdbcTemplateRepository;
 
     public ContentController(ContentCollectionRepository repository){
         this.repository =repository;
