@@ -1,28 +1,24 @@
 package tchami.dev.content_calenda.controller;
 
-import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import tchami.dev.content_calenda.model.Content;
-import tchami.dev.content_calenda.repository.ContentCollectionRepository;
-import tchami.dev.content_calenda.repository.ContentJdbcTemplateRepository;
+import tchami.dev.content_calenda.model.Status;
+import tchami.dev.content_calenda.repository.ContentRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/content")
 @CrossOrigin
 public class ContentController {
-    private final ContentCollectionRepository repository;
+//    private final ContentCollectionRepository repository;
 
 
-//    here if you want you can use the repository from jdbcTemplate same as the first one
-//    private final ContentJdbcTemplateRepository jdbcTemplateRepository;
-
-    public ContentController(ContentCollectionRepository repository){
+ private final ContentRepository repository;
+    public ContentController(ContentRepository repository){
         this.repository =repository;
     }
 
@@ -34,13 +30,13 @@ public class ContentController {
 
     @GetMapping("/{id}")
     public Content findById(@PathVariable Integer id){
-        return repository.finById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"CONTENT NOT FOUND"));
+        return repository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"CONTENT NOT FOUND"));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public void create(@Valid @RequestBody Content content){
-        repository.add(content);
+        repository.save(content);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -49,7 +45,7 @@ public class ContentController {
         if(!repository.existsById(id)){
              throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CONTENT NOT FOUND");
         }
-        repository.add(content);
+        repository.save(content);
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
@@ -57,6 +53,16 @@ public class ContentController {
         if(!repository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CONTENT NOT FOUND");
         }
-        repository.delete(id);
+        repository.deleteById(id);
+    }
+
+    @GetMapping("/filter/{keyword}")
+    public  List<Content> findByTitle(@PathVariable String keyword){
+        return repository.findAllByTitleContains(keyword);
+    }
+
+    @GetMapping("/filter/status/{status}")
+    public List<Content> findByStatus(@PathVariable @Valid Status status){
+        return repository.listAllByStatus(status);
     }
 }
