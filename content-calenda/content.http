@@ -9,7 +9,7 @@ POST http://localhost:8080/api/content
 Content-Type: application/json
 
 {
-  "id": 2,
+  "id": null,
   "title": "title check if is validated",
   "desc": "this is the second description  for testing data on post methode ",
   "status": "IDEA",
