@@ -1,0 +1,42 @@
+[
+  {
+    "id": null,
+    "title": "Spring Boot Guide",
+    "description": "A complete guide to building applications with Spring Boot.",
+    "status": "COMPLETED",
+    "contentType": "ARTICLE",
+    "dateCreated": "2024-08-01T10:30:00",
+    "dateUpdated": "2024-08-03T14:45:00",
+    "url": "https://example.com/spring-boot-guide"
+  },
+  {
+    "id": null,
+    "title": "Kubernetes Crash Course",
+    "description": "Beginner-friendly course on Kubernetes concepts and usage.",
+    "status": "IN_PROGRESS",
+    "contentType": "COURSE",
+    "dateCreated": "2024-08-10T08:00:00",
+    "dateUpdated": "2024-08-15T12:00:00",
+    "url": "https://example.com/kubernetes-course"
+  },
+  {
+    "id": null,
+    "title": "Effective Java Streams",
+    "description": "A talk on how to use Java Streams effectively.",
+    "status": "PUBLISHED",
+    "contentType": "CONFERENCE_TALK",
+    "dateCreated": "2024-07-20T09:15:00",
+    "dateUpdated": "2024-07-21T11:00:00",
+    "url": "https://example.com/java-streams-talk"
+  },
+  {
+    "id": null,
+    "title": "Build a REST API with Spring",
+    "description": "Video tutorial on building REST APIs using Spring.",
+    "status": "IDEA",
+    "contentType": "VIDEO",
+    "dateCreated": "2024-08-19T10:00:00",
+    "dateUpdated": "2024-08-19T10:00:00",
+    "url": "https://example.com/spring-rest-api"
+  }
+]
