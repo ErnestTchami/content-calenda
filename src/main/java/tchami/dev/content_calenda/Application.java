@@ -3,7 +3,9 @@ package tchami.dev.content_calenda;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import tchami.dev.content_calenda.config.ContentCalendarPropeties;
 import tchami.dev.content_calenda.model.Content;
 import tchami.dev.content_calenda.model.Status;
 import tchami.dev.content_calenda.model.Type;
@@ -11,6 +13,7 @@ import tchami.dev.content_calenda.repository.ContentRepository;
 
 import java.time.LocalDateTime;
 
+@EnableConfigurationProperties(ContentCalendarPropeties.class)
 @SpringBootApplication
 public class Application {
 
